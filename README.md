@@ -2,7 +2,7 @@
 
 This repository contains the complete R pipeline for the manuscript:
 
-> **Two-phase displacement of disulfidptosis-related transcriptional programs in Fuchs endothelial corneal dystrophy: an energy-first, cytoskeleton-late axis**
+> **Two-phase displacement of disulfidptosis-related transcriptional programs in Fuchs endothelial corneal dystrophy: an energy-first, cytoskeleton-late pattern**
 
 The study is a purely computational re-analysis of public human corneal endothelial transcriptomes. No wet-lab data are included. Every number, table and figure in the manuscript can be regenerated from the public data and the scripts below.
 
