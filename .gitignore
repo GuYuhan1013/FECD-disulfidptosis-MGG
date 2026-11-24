@@ -1,0 +1,10 @@
+# data and results are not redistributed; download from GEO
+02_原始数据/
+04_分析结果/
+05_文稿/
+.Rhistory
+.RData
+.Rproj.user/
+*.docx
+*.tif
+*.pdf

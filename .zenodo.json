@@ -1,0 +1,15 @@
+{
+  "title": "Analysis code for: Two-phase displacement of disulfidptosis-related transcriptional programs in Fuchs endothelial corneal dystrophy",
+  "upload_type": "software",
+  "publication_date": "2026-11-24",
+  "creators": [
+    {"name": "Gu, Yuhan", "orcid": "0009-0005-3665-3438", "affiliation": "School of Ophthalmology and Optometry, Wenzhou Medical University"},
+    {"name": "Wang, Yudi", "orcid": "0009-0008-8823-5280", "affiliation": "School of Ophthalmology and Optometry, Wenzhou Medical University"}
+  ],
+  "description": "R and Python pipeline for a purely computational re-analysis of public human corneal endothelial transcriptomes (GSE142538, GSE112201, GSE74123): quality filtering, limma-voom differential expression, WGCNA co-expression modules, GO/GSEA enrichment, three-tier candidate intersection, stability selection, program-axis scoring, gene-pathway coupling, and the independent GSE74123 direction check. Includes all scripts, session information and a reproducibility README.",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "version": "1.0.0",
+  "keywords": ["Fuchs endothelial corneal dystrophy", "disulfidptosis", "transcriptome", "WGCNA", "GSEA", "stability selection"]
+}
