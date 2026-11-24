@@ -205,6 +205,7 @@ run_single_gsea <- function(gene) {
   stats_sorted <- sort(rho, decreasing = TRUE)
   cat("  排序值范围：", round(min(stats_sorted), 3), "~", round(max(stats_sorted), 3), "\n")
 
+  set.seed(20261121)   ## 固定 fgsea 蒙特卡洛抽样，保证单基因 GSEA 可复现
   res <- fgsea(pathways = go_f, stats = stats_sorted,
                minSize = 15, maxSize = 500,
                nPermSimple = 10000, eps = 1e-10, nproc = 1)
