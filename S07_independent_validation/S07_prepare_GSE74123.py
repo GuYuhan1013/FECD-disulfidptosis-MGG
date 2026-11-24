@@ -16,9 +16,13 @@ process.
 """
 import glob
 import gzip
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import pyreadr
+
+HERE = Path(__file__).resolve().parent
 
 PROCESSED = {
     "GSM1910841": "control_A17", "GSM1910843": "control_A25",
@@ -28,7 +32,7 @@ PROCESSED = {
 }
 
 # Ensembl -> symbol map from AnnoProbe::humanGTF.
-h = pyreadr.read_r("anno/AnnoProbe/R/sysdata.rda")["humanGTF"]
+h = pyreadr.read_r(HERE / "anno/AnnoProbe/R/sysdata.rda")["humanGTF"]
 h = h.dropna(subset=["ENSEMBL", "SYMBOL"])[["ENSEMBL", "SYMBOL"]].drop_duplicates()
 h["ENSEMBL"] = h["ENSEMBL"].str.replace(r"\..*$", "", regex=True)
 ens2sym = dict(zip(h["ENSEMBL"], h["SYMBOL"]))
@@ -37,7 +41,7 @@ ens2sym = dict(zip(h["ENSEMBL"], h["SYMBOL"]))
 # by the median.
 pcl = {}
 for gsm in PROCESSED:
-    f = glob.glob(f"{gsm}_*.PCL")[0]
+    f = glob.glob(str(HERE / f"{gsm}_*.PCL"))[0]
     d = pd.read_csv(f, sep="\t", header=None, skiprows=1, names=["ens", "value"])
     d["ens"] = d["ens"].str.replace("_at$", "", regex=True)
     d["symbol"] = d["ens"].map(ens2sym)
@@ -48,7 +52,7 @@ pcl = pd.DataFrame(pcl)
 
 # Read the GEO series matrix.
 rows, samples = [], None
-with gzip.open("GSE74123_series_matrix.txt.gz", "rt", errors="replace") as fh:
+with gzip.open(HERE / "GSE74123_series_matrix.txt.gz", "rt", errors="replace") as fh:
     for line in fh:
         if line.startswith("!series_matrix_table_begin"):
             samples = [x.strip().strip('"') for x in next(fh).rstrip("\n").split("\t")[1:]]
@@ -79,5 +83,5 @@ for gene in pcl.index:
 
 out = pd.DataFrame(vals).T
 out.index.name = "gene"
-out.to_csv("GSE74123_19gene_matrix.csv")
+out.to_csv(HERE / "GSE74123_19gene_matrix.csv")
 print("saved GSE74123_19gene_matrix.csv", out.shape)

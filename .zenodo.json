@@ -10,6 +10,6 @@
   "access_right": "open",
   "license": "MIT",
   "language": "eng",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["Fuchs endothelial corneal dystrophy", "disulfidptosis", "transcriptome", "WGCNA", "GSEA", "stability selection"]
 }

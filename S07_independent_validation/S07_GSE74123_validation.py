@@ -6,7 +6,10 @@ Figure S4 is drawn separately by S07_plot_FigS4.py.
 """
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from scipy import stats
+
+HERE = Path(__file__).resolve().parent
 
 DISCOVERY = {
     "OXSM": -0.762295699686256, "LRPPRC": -0.514086753831831,
@@ -25,7 +28,7 @@ NINE = ["OXSM", "GYS1", "LRPPRC", "RPN1", "FLNA", "SLC7A11", "FLNB", "IQGAP1", "
 CONTROL = ["GSM1910841", "GSM1910843", "GSM1910845", "GSM1910847"]
 FECD = ["GSM1910840", "GSM1910842", "GSM1910844", "GSM1910846"]
 
-mat = pd.read_csv("GSE74123_19gene_matrix.csv", index_col=0)
+mat = pd.read_csv(HERE / "GSE74123_19gene_matrix.csv", index_col=0)
 rows = []
 for gene in mat.columns:
     xc = mat.loc[CONTROL, gene].astype(float)
@@ -38,7 +41,7 @@ for gene in mat.columns:
                  "concordant" if np.sign(lfc) == np.sign(disc) else "discordant"])
 res = pd.DataFrame(rows, columns=["gene", "discovery_log2FC", "validation_log2FC",
                                   "welch_P", "mannwhitney_P", "direction"]).set_index("gene")
-res.to_csv("TableS2_GSE74123_validation.csv", float_format="%.4f")
+res.to_csv(HERE / "TableS2_GSE74123_validation.csv", float_format="%.4f")
 
 for label, genes in (("core four", CORE), ("nine candidates", NINE), ("all 19", list(res.index))):
     print(f"{label}: {(res.loc[genes,'direction']=='concordant').sum()}/{len(genes)}")

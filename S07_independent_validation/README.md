@@ -23,6 +23,10 @@ MGG manuscript. It is not part of the 17-step R pipeline.
 
 ## Steps
 
+All three Python scripts resolve paths relative to this folder, so they can be
+run from any directory with `python <path-to-script>`. Step 1 requires
+`pyreadr`; steps 2–3 do not.
+
 1. Place the series matrix, the seven `GSM*.PCL` files and the annotation in
    this folder.
 2. Run the preparation script:

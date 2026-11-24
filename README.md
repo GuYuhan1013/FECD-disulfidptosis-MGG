@@ -10,7 +10,8 @@ The study is a purely computational re-analysis of public human corneal endothel
 
 - R 4.6.1
 - Packages: limma 3.68.5, edgeR 4.10.1, WGCNA 1.74, dynamicTreeCut 1.63.1, impute 1.86.0, matrixStats 1.5.0, clusterProfiler 4.20.2, org.Hs.eg.db 3.23.1, GO.db 3.23.1, AnnotationDbi 1.74.0, fgsea 1.38.0, glmnet 5.2, data.table 1.18.4, ggplot2 4.0.3, pheatmap 1.0.13, ComplexHeatmap 2.28.0.
-- Python 3.12 with pandas, numpy, scipy, matplotlib, Pillow and pyreadr (optional S07 validation only).
+- Helper packages loaded directly: enrichplot 1.32.0, ggrepel 0.9.8, patchwork 1.3.2, reshape2 1.4.5.
+- Python 3.12 or newer with pandas, NumPy, SciPy, Matplotlib and Pillow (S07 validation and Fig. S4). The archived S07 outputs were generated with Python 3.12.11; the statistics script was re-run under Python 3.13.18 and reproduced Table S2 exactly. `pyreadr` is required only when rebuilding the GSE74123 matrix from the raw annotation.
 - A full `sessionInfo()` is provided in `sessionInfo.txt`.
 
 ## Data
